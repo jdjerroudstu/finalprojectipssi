@@ -1,0 +1,14 @@
+/* Navbar Container */
+.navbar {
+    background-color: rgb(52, 49, 49);
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+  
+  
+  
+  
+  
