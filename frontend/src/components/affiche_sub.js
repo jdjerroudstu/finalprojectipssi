@@ -27,7 +27,7 @@ function AfficheSub() {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const response = await fetch("/find-substitute", {
+    const response = await fetch("./find-substitute", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ barcode: barcode })

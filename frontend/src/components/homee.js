@@ -33,7 +33,7 @@ const homee = () => {
               <div className="row justify-content-center">
                   {/* Please note that the form action {% url 'core:research' %} is a django template tag, you will have to replace it with the appropriate url in your react application.
 Also, the input {{ form.food }} is not present here, you may have to add it accordingly. */}
-                  <form action="/affiche_sub" method="get" className="col-lg-6">
+                  <form action="/afficheSub" method="get" className="col-lg-6">
                       <div className="input-group">
                           <input type="text" className="form-control" placeholder="Search for..." />
                           <div className="input-group-append">
