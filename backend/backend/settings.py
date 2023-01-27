@@ -32,31 +32,33 @@ DATABASES = {
     'ENGINE': 'djongo',
     'NAME': 'products',
     'CLIENT': {
-        'HOST': 'mongodb+srv://juda:juda1234@cluster0.td0i9za.mongodb.net/?retryWrites=true&w=majority'
-    }
-    # 'USER': 'juda',
-    # 'PASSWORD': 'juda1234',
+        'HOST': 'mongodb+srv://juda:juda1234@cluster0.td0i9za.mongodb.net/test'
+    },
+    'USER': 'juda',
+    'PASSWORD': 'juda1234',
     }
 }
 # Application definition
 
 INSTALLED_APPS = [
-    'corsheaders',
     'djangobackend',
     'django.contrib.admin',
-    'django.contrib.auth',
+    'django.contrib.auth', 
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
     'djongo',
+    'corsheaders',
     
-    
+    # 'mongoengine'
 ]
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.common.BrokenLinkEmailsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -64,9 +66,30 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.common.BrokenLinkEmailsMiddleware',
+
+
+]
+
+# CORS_ORIGIN_ALLOW_ALL = True
+
+# CORS_ALLOW_HEADERS = [
+#     'accept',
+#     'accept-encoding',
+#     'authorization',
+#     'content-type',
+#     'dnt',
+#     'origin',
+#     'user-agent',
+#     'x-csrftoken',
+#     'x-requested-with',
+# ]
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+
+    'http://127.0.0.1:8000',
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -88,16 +111,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'backend.wsgi.application'
-
-# CORS_ORIGIN_ALLOW_ALL = False
-CORS_ALLOW_CREDENTIALS = True
-CORS_ORIGIN_ALLOW_ALL = True
-ALLOWED_HOSTS = ['*']
-CORS_ORIGIN_WHITELIST = [
-    "http://localhost:8000",
-    "http://127.0.0.1:8000"
-]
-
 
 
 # Database

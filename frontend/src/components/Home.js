@@ -9,7 +9,7 @@ class Home extends Component {
             <div>
                 <Navbar />
                 <Homee />
-                <Footer/>
+                {/* <Footer/> */}
                    
             </div>
         </div>
