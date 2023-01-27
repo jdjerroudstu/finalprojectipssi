@@ -11,7 +11,7 @@ function ShowFoodDetails(props) {
 
   useEffect(() => {
     axios
-      .get(`mongodb+srv://vanessa:vanessa1234@cluster0.td0i9za.mongodb.net/products/${id}`)
+      .get(`http://127.0.0.1:8000/getAllProducts/${id}`)
       .then((res) => {
         setFood(res.data);
       })
@@ -19,18 +19,7 @@ function ShowFoodDetails(props) {
         console.log('Error from ShowFoodDetails');
       });
   }, [id]);
-/*
-  const onDeleteClick = (id) => {
-    axios
-      .delete(`https://world.openfoodfacts.org/api/v0/product/${id}`)
-      .then((res) => {
-        navigate('/');
-      })
-      .catch((err) => {
-        console.log('Error form ShowFoodDetails_deleteClick');
-      });
-  };
-*/
+
   const FoodItem = (
     <div>
       <table className='table table-hover table-dark'>
@@ -45,11 +34,11 @@ function ShowFoodDetails(props) {
             <td>Barcode</td>
             <td>{Food.code}</td>
           </tr>
-          {/* <tr>
+          <tr>
             <th scope='row'>3</th>
-            <td>Quantity</td>
-            <td>{Food.quantity}</td>
-          </tr> */}
+            <td>URL vers openfoodfact</td>
+            <td>{Food.url}</td>
+          </tr> 
           <tr>
             <th scope='row'>4</th>
             <td>Brands</td>

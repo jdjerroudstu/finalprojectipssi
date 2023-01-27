@@ -15,7 +15,7 @@ const FoodCard = (props) => {
         <h2>
           <Link to={`/show-Food/${Food._id}`}>{Food.product_name}</Link>
         </h2>
-        <h3>{Food.code}</h3>
+        <h3>{Food.categories}</h3>
         <p>{Food.brands}</p>
       </div>
     </div>

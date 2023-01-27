@@ -5,23 +5,19 @@ import { Link } from 'react-router-dom';
 import FoodCard from './FoodCard';
 
 function ShowFoodList() {
-  const [Foods, setFoods] = useState([]);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     axios
-      .get('mongodb+srv://vanessa:vanessa1234@cluster0.td0i9za.mongodb.net/products')
+      .get('http://127.0.0.1:8000/getAllProducts')
       .then((res) => {
-        setFoods(res.data);
+        setProducts(res.data);
+        console.log('everything is okay');
       })
       .catch((err) => {
         console.log('Error from ShowFoodList');
       });
   }, []);
-
-  const FoodList =
-    Foods.length === 0
-      ? 'there is no Food record!'
-      : Foods.map((Foods, k) => <FoodCard Foods={Foods} key={k} />);
 
   return (
     <div className='ShowFoodList'>
@@ -31,16 +27,23 @@ function ShowFoodList() {
             <br />
             <h2 className='display-4 text-center'>Foods List</h2>
           </div>
-
           <div className='col-md-11'>
-            
+          <ul>
+            {products.map(product => (
+              <li key={product.id}>
+                {product.product_name}
+              </li>
+            ))}
+          </ul>
           </div>
         </div>
 
-        <div className='list'>{FoodList}</div>
+        {/* <div className='list'>{FoodList}</div> */}
       </div>
     </div>
   );
 }
 
 export default ShowFoodList;
+
+
