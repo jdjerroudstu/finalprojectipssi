@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Liste des produits alimentaires</title>
+  </head>
+  <body>
+    <h1>Liste des produits alimentaires</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nom du produit</th>
+          <th>Categorie</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for product in products %}
+        <tr>
+          <td>{{ product.code }}</td>
+          <td>{{ product.product_name }}</td>
+          <td>{{ product.categories }}</td>
+          <td>{{ product.brands }}</td>
+          <td>{{ product.stores }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>

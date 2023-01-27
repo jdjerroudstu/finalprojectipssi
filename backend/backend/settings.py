@@ -31,14 +31,17 @@ DATABASES = {
     'default': {
     'ENGINE': 'djongo',
     'NAME': 'products',
-    'HOST': 'mongodb+srv://vanessa:vanessa1234@cluster0.td0i9za.mongodb.net/products',
-    # 'USER': 'vanessa',
-    # 'PASSWORD': 'vanessa1234',
+    'CLIENT': {
+        'HOST': 'mongodb+srv://juda:juda1234@cluster0.td0i9za.mongodb.net/?retryWrites=true&w=majority'
+    }
+    # 'USER': 'juda',
+    # 'PASSWORD': 'juda1234',
     }
 }
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'djangobackend',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -46,9 +49,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'djongo',
+    
+    
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -56,6 +64,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.common.BrokenLinkEmailsMiddleware',
 ]
 
 ROOT_URLCONF = 'backend.urls'
@@ -77,6 +88,16 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'backend.wsgi.application'
+
+# CORS_ORIGIN_ALLOW_ALL = False
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = True
+ALLOWED_HOSTS = ['*']
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:8000",
+    "http://127.0.0.1:8000"
+]
+
 
 
 # Database
